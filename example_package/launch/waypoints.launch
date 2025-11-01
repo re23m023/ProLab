@@ -1,0 +1,11 @@
+<launch>
+  <!-- Navigation Stack starten -->
+  <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
+    <arg name="map_file" value="$(find your_package)/maps/your_map.yaml" />
+  </include>
+
+  <!-- Waypoint-Node -->
+  <node pkg="example_package" type="waypoint_node" name="waypoint_node" output="screen">
+    <rosparam file="$(find example_package)/config/waypoints.yaml" command="load"/>
+  </node>
+</launch>
