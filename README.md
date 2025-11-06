@@ -53,4 +53,4 @@ Same setup
 
 Well, still the same
 
-#The code was formatted and commented by AI
+#The code was formatted and commented with AI support
