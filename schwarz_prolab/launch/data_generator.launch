@@ -1,0 +1,24 @@
+<launch>
+  <!-- RUN 1: Simple 4-Waypoint Python Follower -->
+  <node pkg="schwarz_prolab"
+        type="waypoint_follower.py"
+        name="waypoint_follower"
+        output="screen" />
+
+  <!-- ROSBAG Recorder (automatically stops when follower ends) -->
+  <node pkg="rosbag" 
+        type="record" 
+        name="recorder" 
+        output="screen"
+        respawn="false"
+        args="-O $(find schwarz_prolab)/bags/run1.bag
+              /gazebo/model_states
+              /prediction_KF
+              /prediction_EKF
+              /prediction_pf_mean
+              /cmd_vel
+              /odom
+              /imu
+              /scan" />
+</launch>
+

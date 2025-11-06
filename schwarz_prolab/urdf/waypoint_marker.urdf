@@ -1,0 +1,34 @@
+<robot name="waypoint_marker">
+  <link name="marker_link">
+
+    <visual>
+      <geometry>
+        <sphere radius="0.08"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1.0"/>
+      </material>
+    </visual>
+
+
+    <collision>
+      <geometry>
+        <sphere radius="0.08"/>
+      </geometry>
+      <surface>
+        <contact>
+          <collide_without_contact>false</collide_without_contact>
+        </contact>
+      </surface>
+    </collision>
+
+ 
+    <inertial>
+      <mass value="0.0001"/>
+      <inertia ixx="1e-6" iyy="1e-6" izz="1e-6"
+               ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+
+  </link>
+</robot>
+

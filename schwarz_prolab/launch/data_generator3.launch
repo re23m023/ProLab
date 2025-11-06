@@ -1,0 +1,72 @@
+<launch>
+
+  <!-- =========================================================
+       WAYPOINT MARKERS: RED CIRCLE (CLOCKWISE)
+       - 16 equally spaced markers forming a circular path
+       - The robot follows these markers in a clockwise direction
+       - Each marker uses the shared red marker URDF definition
+       ========================================================= -->
+
+  <node name="dc_cw_01" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_01 -x 3.0  -y 1.0   -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_02" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_02 -x 2.85 -y -1.77 -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_03" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_03 -x 2.41 -y -2.41 -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_04" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_04 -x 1.77 -y -2.85 -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_05" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_05 -x 1.0  -y -3.0  -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_06" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_06 -x -1.77 -y -2.85 -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_07" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_07 -x -2.41 -y -2.41 -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_08" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_08 -x -2.85 -y -1.77 -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_09" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_09 -x -3.0  -y 1.0   -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_10" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_10 -x -2.85 -y 1.77  -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_11" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_11 -x -2.41 -y 2.41  -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_12" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_12 -x -1.77 -y 2.85  -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_13" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_13 -x 1.0  -y 3.0   -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_14" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_14 -x 1.77 -y 2.85  -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_15" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_15 -x 2.41 -y 2.41  -z 0.05 -urdf -param wp_marker_description"/>
+  <node name="dc_cw_16" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-model dc_cw_16 -x 2.85 -y 1.77  -z 0.05 -urdf -param wp_marker_description"/>
+        
+  <!-- =========================================================
+       Shared URDF Parameter for all Markers
+       - This loads the marker description from a URDF file
+       - Used by all markers spawned above
+       ========================================================= -->
+
+  <param name="wp_marker_description"
+         textfile="$(find schwarz_prolab)/urdf/waypoint_marker.urdf"/>
+
+
+  <!-- =========================================================
+       ROSBAG RECORDER
+       - Records all relevant topics during Run 3
+       - Data is saved in: schwarz_prolab/bags/run3.bag
+       - Includes ground truth, filter predictions, control inputs,
+         and sensor readings for later RMSE and trajectory analysis
+       ========================================================= -->
+
+  <node pkg="rosbag" type="record" name="recorder" output="screen"
+        args="-O $(find schwarz_prolab)/bags/run3.bag
+              /gazebo/model_states
+              /prediction_KF
+              /prediction_EKF
+              /prediction_pf_mean
+              /cmd_vel
+              /odom
+              /imu
+              /scan"/>
+</launch>
+
