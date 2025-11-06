@@ -39,33 +39,6 @@
        - Each filter publishes its estimated pose to a different topic
        ========================================================= -->
 
-  <!-- Kalman Filter Node (Linear model) -->
-  <node pkg="schwarz_prolab" type="filter_node_KF" name="filter_node_KF" output="screen">
-    <param name="odom_topic" value="/odom"/>
-    <param name="imu_topic" value="/imu"/>
-    <param name="frame_id" value="odom"/>
-    <param name="prediction_topic" value="/prediction_KF"/>
-    <!-- Process noise covariance (Q) -->
-    <param name="Q_diag" value="[0.02, 0.02, 0.015]"/>
-    <!-- Measurement noise covariance (R) -->
-    <param name="R_diag" value="[0.07, 0.07, 0.04]"/>
-    <!-- Initial uncertainty (P₀) -->
-    <param name="P0_diag" value="[0.10, 0.10, 0.10]"/>
-  </node>
-
-  <!-- Extended Kalman Filter Node (Nonlinear model) -->
-  <node pkg="schwarz_prolab" type="filter_node_EKF" name="filter_node_EKF" output="screen">
-    <param name="odom_topic" value="/odom"/>
-    <param name="imu_topic" value="/imu"/>
-    <param name="frame_id" value="odom"/>
-    <param name="prediction_topic" value="/prediction_EKF"/>
-    <!-- Process noise (Q): lower than PF -->
-    <param name="Q_diag" value="[0.015, 0.015, 0.008]"/>
-    <!-- Measurement noise (R): yaw only -->
-    <param name="R_diag" value="[0.0, 0.0, 0.025]"/>
-    <param name="P0_diag" value="[0.10, 0.10, 0.10]"/>
-  </node>
-
   <!-- Particle Filter Node (Landmarks) -->
   <node pkg="schwarz_prolab" type="filter_node_PF" name="filter_node_PF" output="screen">
       <!-- Number of particles -->
@@ -96,7 +69,7 @@
       <param name="jitter_theta" value="0.02" />
 
       <!-- Outlier removal (distance from particle mean) -->
-      <param name="outlier_distance_threshold" value="2.0" />
+      <param name="outlier_distance_threshold" value="0.0" />
       <param name="outlier_max_remove" value="5" />
 
       <!-- Sign correction (if needed) -->

@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 # =========================================================
-# RUN 1 – Four-Waypoint Square Path (Simple Odometry Control)
-# ---------------------------------------------------------
 # - Drives through four fixed waypoints (square trajectory)
 # - Uses odometry for feedback
 # - Publishes /cmd_vel directly (no navigation stack)

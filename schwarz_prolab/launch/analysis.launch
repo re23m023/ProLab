@@ -1,0 +1,14 @@
+<launch>
+  <!-- =========================================================
+       ANALYSIS TOOL LAUNCH
+       Runs the analyse_tool.py script located in schwarz_prolab/scripts
+       ========================================================= -->
+
+  <node pkg="schwarz_prolab"
+        type="analyse_tool.py"
+        name="analyse_tool"
+        output="screen"
+        cwd="node">
+  </node>
+</launch>
+

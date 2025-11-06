@@ -2,29 +2,11 @@
 # =========================================================
 # This script automatically analyzes all .bag files
 # located in the ./bags/ directory. It:
-#   ✅ extracts Ground Truth, KF, EKF, and PF positions
-#   ✅ computes RMSE (x, y)
-#   ✅ saves CSV results and trajectory plots
-#   ✅ generates a summary table for all runs
-#
-# Usage in Terminal:
-# ---------------------------------------------------------
-# 1. Start simulation and record runs:
-#    cd ~/catkin_pro/src/example_package/bags
-#    rosbag record -O run1.bag /odom /imu /gazebo/model_states \
-#        /prediction_KF /prediction_EKF /prediction_particle \
-#        /prediction_particle_mean /cmd_vel /scan
-#
-# 2. After recording several runs:
-#    cd ~/catkin_pro/src/example_package
-#    python3 ./scripts/analyse_tool.py
-#
-# 3. You will find the results here:
-#    ~/catkin_pro/src/example_package/results/
-#       ├── run1_rmse.csv
-#       ├── run1_traj.png
-#       ├── ...
-#       └── summary_rmse_all_runs.csv
+#   extracts Ground Truth, KF, EKF, and PF positions
+#   computes RMSE (x, y)
+#   saves CSV results and trajectory plots
+#   generates a summary table for all runs
+
 # =========================================================
 
 import rosbag
