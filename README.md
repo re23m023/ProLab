@@ -30,7 +30,10 @@ Loads a shared URDF marker description for visualization.
 Records the full dataset to run3.bag for later analysis.
 
 
+**analysis.launch**
 
+Runs the analysis script to process all bag files and generate RMSE results.
+Bags can be found in the .zip
 
 
 **KF.launch**
