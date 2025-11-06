@@ -45,5 +45,4 @@ Same setup
 
 **PF.launch**
 
-I think you know what to expect here
-I was sitting on that filter for a long time and would love your feedback and advice for better functionality
+Well, still the same
